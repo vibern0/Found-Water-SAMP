@@ -1,17 +1,29 @@
 #include "SDK/amx/amx.h"
 #include "SDK/plugincommon.h"
 
-
 typedef void(*logprintf_t)(char* format, ...);
 
+#include "water.h"
 
 logprintf_t logprintf;
 extern void *pAMXFunctions;
 
 
-cell AMX_NATIVE_CALL HelloWorld(AMX* amx, cell* params)
+cell AMX_NATIVE_CALL AddWaterArea(AMX* amx, cell* params)
 {
-	logprintf("This was printed from the Test plugin! Yay!");
+	//
+	return 1;
+}
+
+cell AMX_NATIVE_CALL RemoveWaterArea(AMX* amx, cell* params)
+{
+	//
+	return 1;
+}
+
+cell AMX_NATIVE_CALL PointInWaterArea(AMX* amx, cell* params)
+{
+	//
 	return 1;
 }
 
@@ -25,18 +37,20 @@ PLUGIN_EXPORT bool PLUGIN_CALL Load(void **ppData)
 	pAMXFunctions = ppData[PLUGIN_DATA_AMX_EXPORTS];
 	logprintf = (logprintf_t)ppData[PLUGIN_DATA_LOGPRINTF];
 
-	logprintf(" * Test plugin was loaded.");
+	logprintf(" * Found-Water-SAMP plugin Loaded *");
 	return true;
 }
 
 PLUGIN_EXPORT void PLUGIN_CALL Unload()
 {
-	logprintf(" * Test plugin was unloaded.");
+	logprintf(" * Found-Water-SAMP plugin Unloaded *");
 }
 
 AMX_NATIVE_INFO PluginNatives[] =
 {
-	{ "HelloWorld", HelloWorld },
+	{ "AddWaterArea", AddWaterArea },
+	{ "RemoveWaterArea", RemoveWaterArea },
+	{ "PointInWaterArea", PointInWaterArea },
 	{ 0, 0 }
 };
 
