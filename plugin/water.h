@@ -5,6 +5,6 @@
 
 int add_water_area(char* area);
 bool remove_water_area(int id);
-bool point_in_any_water_area(int x, int y);
+bool point_in_any_water_area(float x, float y);
 
 #endif

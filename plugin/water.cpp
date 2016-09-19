@@ -33,7 +33,7 @@ bool remove_water_area(int id)
 	return false;
 }
 
-bool point_in_any_water_area(int x, int y)
+bool point_in_any_water_area(float x, float y)
 {
 	bool success = false;
 	point_type p(x, y);

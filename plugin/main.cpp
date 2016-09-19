@@ -11,8 +11,27 @@ extern void *pAMXFunctions;
 
 cell AMX_NATIVE_CALL AddWaterArea(AMX* amx, cell* params)
 {
-	//
-	return 1;
+	int len = 0, ret = 0;
+	cell *addr = nullptr;
+
+	amx_GetAddr(amx, params[1], &addr);
+	amx_StrLen(addr, &len);
+
+	if (len)
+	{
+		len++;
+		
+		char* text = new char[len];
+		amx_GetString(text, addr, 0, len);
+		
+		ret = add_water_area(text);
+
+		logprintf("New water area added!");
+
+		delete[] text;
+	}
+
+	return (cell)1;
 }
 
 cell AMX_NATIVE_CALL RemoveWaterArea(AMX* amx, cell* params)
@@ -23,8 +42,11 @@ cell AMX_NATIVE_CALL RemoveWaterArea(AMX* amx, cell* params)
 
 cell AMX_NATIVE_CALL PointInWaterArea(AMX* amx, cell* params)
 {
-	//
-	return 1;
+	float x, y;
+	x = amx_ctof(params[1]);
+	y = amx_ctof(params[2]);
+
+	return (cell)point_in_any_water_area(x, y);
 }
 
 PLUGIN_EXPORT unsigned int PLUGIN_CALL Supports()
