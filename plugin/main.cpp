@@ -31,7 +31,7 @@ cell AMX_NATIVE_CALL AddWaterArea(AMX* amx, cell* params)
 		delete[] text;
 	}
 
-	return (cell)1;
+	return (cell)ret;
 }
 
 cell AMX_NATIVE_CALL RemoveWaterArea(AMX* amx, cell* params)
@@ -40,7 +40,7 @@ cell AMX_NATIVE_CALL RemoveWaterArea(AMX* amx, cell* params)
 	return 1;
 }
 
-cell AMX_NATIVE_CALL PointInWaterArea(AMX* amx, cell* params)
+cell AMX_NATIVE_CALL PointInAnyWaterArea(AMX* amx, cell* params)
 {
 	float x, y;
 	x = amx_ctof(params[1]);
@@ -72,7 +72,7 @@ AMX_NATIVE_INFO PluginNatives[] =
 {
 	{ "AddWaterArea", AddWaterArea },
 	{ "RemoveWaterArea", RemoveWaterArea },
-	{ "PointInWaterArea", PointInWaterArea },
+	{ "PointInAnyWaterArea", PointInAnyWaterArea },
 	{ 0, 0 }
 };
 
