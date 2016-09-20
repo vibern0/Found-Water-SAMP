@@ -24,11 +24,17 @@ int add_water_area(char* area)
 	polygon_type poly;
 	boost::geometry::read_wkt("POLYGON(" + string(area) + ")", poly);
 
+	areas.push_back(poly);
 	water_area_id ++;
 	return water_area_id;
 }
 
 bool remove_water_area(int id)
+{
+	return false;
+}
+
+bool point_in_water_area(int area_id, float x, float y)
 {
 	return false;
 }
@@ -48,4 +54,9 @@ bool point_in_any_water_area(float x, float y)
 	}
 
 	return success;
+}
+
+int get_water_area_by_point(float x, float y)
+{
+	return 1;
 }
